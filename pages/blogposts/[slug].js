@@ -1,45 +1,46 @@
-import React,{useState,useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import styles from '../../styles/BlogPost.module.css'
 
 
 
-const Slug = () => {
-  const [Blogs, setBlogs] = useState();
+const Slug = (props) => {
+  const [Blogs, setBlogs] = useState(props.allblog);
 
-    const router = useRouter()
-    const {slug} = router.query
-    console.log(slug)
-    useEffect(() => {
-      if (!router.isReady) return;
-      console.log("slug fetch api is working")
-     fetch(`http://localhost:3000/api/getblogs?slug=${slug}`).then((d)=>{
-      return d.json()
-      // console.log(d)
-     }).then((parsed)=>{
-      console.log("1")
-      console.log(parsed)
-      console.log("2")
-      setBlogs(parsed)
-     })
-     
-    }, [router.isReady]);
+
 
   return (
 
-    <div  className={styles.container}>
-           <main className={styles.main}>
+    <div className={styles.container}>
+      <main className={styles.main}>
 
-  <h1> {Blogs && Blogs.title} </h1>
+        <h1> {Blogs && Blogs.title} </h1>
 
-     <p>{Blogs && Blogs.content}</p>
-  
- 
-    
-    
+        <p>{Blogs && Blogs.content}</p>
+
+
+
+
       </main>
     </div>
   )
 }
 
-export default Slug
+export async function getServerSideProps(context) {
+  // console.log(context.query)
+  // const router = useRouter()
+  const {slug} = context.query
+
+  console.log("slug fetch api is working")
+ 
+  let data = await   fetch(`http://localhost:3000/api/getblogs?slug=${slug}`)
+ let allblog = await data.json()
+
+
+
+  return {
+    props: { allblog }, // will be passed to the page component as props
+  }
+}
+
+    export default Slug
