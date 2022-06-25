@@ -1,0 +1,10 @@
+.container{
+    margin: 45px auto ;
+    max-width: 50vw;
+}
+.center{
+    /* align-items: center; */
+    text-align: center;
+    color: aqua;
+}
+
