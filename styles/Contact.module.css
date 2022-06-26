@@ -1,12 +1,68 @@
 .container{
-    margin:56px auto ;
-    max-width: 45vw;
+    margin:auto ;
+    max-width: 50vw;
 }
 .mb3{
-    margin: 2px;
+    margin: 22px;
     padding: 2px;
 
 }
 .label{
     margin: 2px 14px;
+    margin-left: 1px;
+    color: rgb(43, 61, 8);
+    font-size: larger;
+}
+.input{
+    
+    width: 40vw;
+    height: 4vh;
+    border-radius: 4px;
+    border: 1px solid rgb(219, 231, 230);
+    background-color: white;
+}
+.h1{
+    text-align: center;
+    color: gray;
+}
+.btn{
+    padding: 3px 14px;
+    margin-top: 4px;
+    margin-left: 24px;
+    text-align: center;
+    font-size: larger;
+    font-style: italic;
+    /* color: rgb(26, 142, 243); */
+    background-color: rgb(119, 119, 180);
+    border: 1px solid grey;
+    border-radius: 4px;
+    cursor: pointer;
+
+}
+.emil{
+    color: brown;
+}
+.desc{
+    width: 40vw;
+    height: 14vh;
+    border-radius: 4px;
+    /* background-color: white; */
+    border: 1px solid rgb(219, 231, 230);
+}
+
+@media (max-width: 800px) {
+
+    .input{
+    
+        width: 40vw;
+        height: 3vh;
+        border-radius: 4px;
+        border: 1px solid rgb(219, 231, 230);
+    }
+    .label{
+        margin: 2px 14px;
+        margin-left: 1px;
+        color: rgb(43, 61, 8);
+        font-size: small;
+    }
 }
