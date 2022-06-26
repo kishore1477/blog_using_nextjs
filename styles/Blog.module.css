@@ -10,3 +10,7 @@
   .blogitemh3{
     cursor: pointer;
   }
+  .container{
+    margin: auto;
+    width: 45vw;
+  }
