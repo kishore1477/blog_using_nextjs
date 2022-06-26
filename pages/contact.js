@@ -1,79 +1,91 @@
-import React, {useState} from 'react'
-import * as fs from 'fs';
-const Contact = (props) => {
-  console.log("This is props")
-  console.log(props)
-  const [contact, setcontact] = useState(props.allContact);
-  console.log(contact)
-  console.log(contact)
-  console.log("This is contact length")
-  console.log(contact.length)
-//   for (let index = 0; index < contact.length; index++) {
-//     const item = contact[index];
-//     console.log(item.name)
-//     setcontact(item)
-    
-// }
-console.log("This is contact data 1")
+import React, { useState } from 'react'
+import styles from '../styles/Contact.module.css'
 
-console.log(contact)
-console.log("This is contact data 2")
-  return (
-    <div>
+const contact = () => {
+    // write sum of two number
+    const [name, setname] = useState('');
 
-      {contact.map((item)=>{
+    const [email, setemail] = useState('');
+    const [phone, setphone] = useState('');
+    const [desc, setdesc] = useState('');
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        console.log(name, email, phone, desc)
+        const data = { name, email, phone, desc };
 
-      return  <h1 key={item.slug}>{item.name}</h1>
-      })}
-     
-    </div>
-  )
+        fetch('http://localhost:3000/api/postContact/', {
+          method: 'POST', // or 'PUT'
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        })
+        // .then(response => response.text())
+        .then(data => {
+          console.log('Success: is .. ', data);
+          alert("Thanks for contact us");
+          setname('');
+          setemail('');
+          setphone('');
+          setdesc('');
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+                
+                
+        
+                  
+        
+                
+        
+                
+              
+    }
+    const handleChange = (e) => {
+        console.log(e, "Change")
+        if (e.target.name === 'name') {
+            setname(e.target.value)
+            console.log(name)
+        }
+        else if (e.target.name === 'phone') {
+            setphone(e.target.value)
+        }
+        else if (e.target.name === 'email') {
+            setemail(e.target.value)
+        } 
+        else if (e.target.name === 'desc') {
+            setdesc(e.target.value)
+        } 
+    }
+    return (
+        <div className={styles.container}>
+            <h1>Contact Us</h1>
+            <form onSubmit={handleSubmit}>
+                <div className={styles.mb3}>
+
+                    <label htmlFor="name" className={styles.label}>Enter your name</label>
+                    <input type="text" onChange={handleChange} value={name} className="form-control" id="name"  name="name" aria-describedby="emailHelp" />
+                </div>
+                <div className={styles.mb3}>
+
+                    <label htmlFor="email" className={styles.label}>Email address</label>
+                    <input type="email" value={email} onChange={handleChange} className="form-control" id="email" name='email' aria-describedby="emailHelp" />
+                    <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
+                </div>
+                <div className={styles.mb3}>
+                    <label htmlFor="phone" className={styles.label}>Phone</label>
+                    <input type="phone" value={phone} onChange={handleChange} className="form-control" id="phone" name='phone' />
+                </div>
+                <div className={styles.mb3}>
+                    <label htmlFor="desc" className={styles.label}>Elaborate your concern</label>
+                    <textarea type="phone" value={desc} onChange={handleChange} className="form-control" id="desc" name='desc' />
+                </div>
+
+                <button type="submit" className="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    )
 }
-export async function getStaticProps(context) {
-  let data = await fs.promises.readdir("contactData");
-  console.log("This is data")
-  console.log(data)
-  let myfile;
-  // let allBlogs ;
-  let allContact = [];
-  for (let index = 0; index < data.length; index++) {
-      const item = data[index];
-      console.log(item)
-      myfile = await fs.promises.readFile(('contactData/' + item), 'utf-8')
-      console.log("This is my file")
-      console.log(myfile)
-    //  let  myfile1 = JSON.parse(myfile)
-    allContact.push(JSON.parse(myfile))
-      // allBlogs.push(JSON.stringify(myfile))
-  }
 
-  return {
-      props: { allContact }, // will be passed to the page component as props
-  }
-}
-
-
-// export async function getStaticPaths() {
-//   return {
-//       paths: [
-//           { params: { slug: '1' } },
-//           { params: { slug: '2' } },
-//           { params: { slug: '3' } },
-//           { params: { slug: '4' } },
-//           { params: { slug: '5' } },
-//       ],
-//       fallback: true // false or 'blocking'
-//   };
-// }
-// export async function getStaticProps(context) {
-//   const { slug } = context.params;
-//   let myBlog = await fs.promises.readFile(`contactData/${slug}.json`, 'utf-8')
-//   return {
-//       props: { myBlog: JSON.parse(myBlog) }, // will be passed to the page component as props
-//   }
-// }
-
-
-
-export default Contact
-
+export default contact
