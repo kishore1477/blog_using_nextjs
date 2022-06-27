@@ -18,7 +18,7 @@ const Contact = () => {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify(data),
+          body: JSON.parse(data),
         })
         // .then(response => response.text())
         .then(data => {
