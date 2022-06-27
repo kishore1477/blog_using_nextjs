@@ -1,19 +1,19 @@
 import React, { useState } from 'react'
 import styles from '../styles/Contact.module.css'
 
-const contact = () => {
+const Contact = () => {
     // write sum of two number
-    const [name, setname] = useState('');
+    const [name, setname] = useState("");
 
-    const [email, setemail] = useState('');
-    const [phone, setphone] = useState('');
-    const [desc, setdesc] = useState('');
+    const [email, setemail] = useState("");
+    const [phone, setphone] = useState("");
+    const [desc, setdesc] = useState("");
     const handleSubmit = (e) => {
         e.preventDefault()
         const data = { name, email, phone, desc };
 
         fetch('http://localhost:3000/api/postContact/', {
-          method: 'POST', // or 'PUT'
+          method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
@@ -41,10 +41,8 @@ const contact = () => {
               
     }
     const handleChange = (e) => {
-        console.log(e, "Change")
         if (e.target.name === 'name') {
             setname(e.target.value)
-            console.log(name)
         }
         else if (e.target.name === 'phone') {
             setphone(e.target.value)
@@ -52,7 +50,7 @@ const contact = () => {
         else if (e.target.name === 'email') {
             setemail(e.target.value)
         } 
-        else if (e.target.name === 'desc') {
+        else  {
             setdesc(e.target.value)
         } 
     }
@@ -63,12 +61,12 @@ const contact = () => {
                 <div className={styles.mb3}>
 
                     <label htmlFor="name" className={styles.label}>Enter your name</label> <br/>
-                    <input type="text" onChange={handleChange} value={name} className={styles.input} id="name"  name="name" aria-describedby="emailHelp" />
+                    <input type="text" onChange={handleChange} value={name} className={styles.input} id="name"  name="name" />
                 </div>
                 <div className={styles.mb3}>
 
                     <label htmlFor="email" className={styles.label}>Email address</label><br/>
-                    <input type="email" value={email} onChange={handleChange} className={styles.input} id="email" name='email' aria-describedby="emailHelp" />
+                    <input type="email" value={email} onChange={handleChange} className={styles.input} id="email" name='email'  />
                     <div id="emailHelp" className={styles.emil}>We'll never share your email with anyone else.</div>
                 </div>
                 <div className={styles.mb3}>
@@ -77,7 +75,7 @@ const contact = () => {
                 </div>
                 <div className={styles.mb3}>
                     <label htmlFor="desc" className={styles.label}>Elaborate your concern</label><br/>
-                    <textarea type="phone" value={desc} onChange={handleChange}    className={styles.desc} id="desc" name='desc' />
+                    <textarea type="text" value={desc} onChange={handleChange}    className={styles.desc} id="desc" name='desc' />
                 </div>
 
                 <button type="submit" className={styles.btn}>Submit</button>
@@ -86,4 +84,4 @@ const contact = () => {
     )
 }
 
-export default contact
+export default Contact

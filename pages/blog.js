@@ -4,7 +4,7 @@ import Link from 'next/link';
 import styles from '../styles/Blog.module.css'
 
 import InfiniteScroll from 'react-infinite-scroll-component';
-const blog = (props) => {
+const Blog = (props) => {
  
 const [Blogs, setBlogs] = useState(props.allBlogs);
 const [count, setcount] = useState(2);
@@ -79,4 +79,4 @@ export async function getStaticProps(context) {
   }
 }
 
-export default blog
+export default Blog
