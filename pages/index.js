@@ -33,7 +33,7 @@ export default function Home() {
           <h2 className={styles.h2}>Latest Blogs</h2>
           <div>
             <h3 className={styles.h3} >How to learn Javascripts in 2022?</h3>
-            <p className={styles.p}>JavaScripts is a language for design  logic for web Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam odit nisi neque maiores
+            <p className={styles.p}>JavaScripts is a language for design  logic for web  while changing to content 
               dolor!.</p>
             <button className={styles.btn}>Read more</button>
           </div>
