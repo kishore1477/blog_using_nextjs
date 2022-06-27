@@ -41,6 +41,7 @@
 }
 .emil{
     color: brown;
+    font-size: xx-small;
 }
 .desc{
     width: 40vw;
@@ -50,7 +51,7 @@
     border: 1px solid rgb(219, 231, 230);
 }
 
-@media (max-width: 800px) {
+@media (max-width: 600px) {
 
     .input{
     
@@ -64,5 +65,9 @@
         margin-left: 1px;
         color: rgb(43, 61, 8);
         font-size: small;
+    }
+    .container{
+        /* margin:auto ; */
+        max-width: 90vw;
     }
 }

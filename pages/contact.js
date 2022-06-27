@@ -10,7 +10,6 @@ const contact = () => {
     const [desc, setdesc] = useState('');
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(name, email, phone, desc)
         const data = { name, email, phone, desc };
 
         fetch('http://localhost:3000/api/postContact/', {
@@ -22,7 +21,6 @@ const contact = () => {
         })
         // .then(response => response.text())
         .then(data => {
-          console.log('Success: is .. ', data);
           alert("Thanks for contact us");
           setname('');
           setemail('');

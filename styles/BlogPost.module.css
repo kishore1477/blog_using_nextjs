@@ -8,5 +8,17 @@
     align-items: center;
   }
   .container {
-    padding: 0 15rem;
+    /* padding: 0 15rem; */
+    margin: auto;
+    width: 45vw;
+
+  }
+  .h1{
+    color: grey;
+  }
+  @media (max-width: 800px) {
+    .container {
+      width: 90vw;
+  
+    }
   }

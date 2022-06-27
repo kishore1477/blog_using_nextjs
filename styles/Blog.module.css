@@ -14,3 +14,25 @@
     margin: auto;
     width: 45vw;
   }
+  .h1{
+text-align: center;
+color: blueviolet;
+  }
+  .btn{
+    cursor: pointer;
+    background-color: rgb(10, 10, 10);
+    color: rgb(37, 50, 175);
+    padding: 4px 8px;
+    font-size: larger;
+border-radius: 6px;
+  }
+
+  
+@media (max-width: 800px) {
+  .container{
+    /* margin: auto; */
+    width: 90vw;
+  }
+
+
+}

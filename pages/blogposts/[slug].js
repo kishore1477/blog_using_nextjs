@@ -14,7 +14,7 @@ const Slug = (props) => {
     <div className={styles.container}>
       <main className={styles.main}>
 
-        <h1> {Blogs && Blogs.title} </h1>
+        <h1 className={styles.h1}> {Blogs && Blogs.title} </h1>
 
         <p>{Blogs && Blogs.content}</p>
 
