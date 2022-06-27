@@ -25,7 +25,7 @@ export default function Home() {
           width={150}
           height={150} />
         <p className={styles.description}>
-          A blog for hunting Coders by a hunting Coder Lorem,
+          This is one the best bloger website on the internet 
         </p>
         {/* <div className={`${styles1.con}${styles2.con}`} > */}
         <div>
