@@ -13,6 +13,7 @@ const Contact = () => {
         const data = { name, email, phone, desc };
 
         fetch('http://localhost:3000/api/postContact/', {
+            mode: 'no-cors',
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
